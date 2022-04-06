@@ -10,15 +10,13 @@ public class Invoice {
 //    private Collection<Product> products = new ArrayList<>();//przechowuje kolekcje produktow, a jako implementacje wykorzystuje arrayList
     private Map<Product, Integer> products = new HashMap<>();
     private Map<Product, Integer> taxes = new HashMap<>();
-    public void addProduct(Product product) {
+   public void addProduct(Product product) {
 //        this.products.put(product,1);
         this.addProduct(product, 1);
     }
 
     public void addProduct(Product product, Integer quantity) {//ta metoda jest przeciazona
-
          if(quantity < 1){throw new IllegalArgumentException("quantity can not be less than 1");}
-
         this.products.put(product, quantity);
     }
 
@@ -47,8 +45,6 @@ public class Invoice {
     }
 
     public BigDecimal getTotal() {
-
-
         return  this.getTax().add(this.getNetTotal());
     }
 }
