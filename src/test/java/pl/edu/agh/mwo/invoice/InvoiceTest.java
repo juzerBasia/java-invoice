@@ -187,7 +187,7 @@ public class InvoiceTest {
     public void testInvoiceHasProperExcise() {
           //excise 5.56 per bottle = 55.60 in total
         invoice.addProduct(bottleOfWine, 10);
-        Assert.assertThat(new BigDecimal("0.001"), Matchers.greaterThan(invoice.getTotalExcise().subtract(new BigDecimal(55.60))));
+        Assert.assertThat(new BigDecimal("55.60"), Matchers.equalTo(invoice.getTotalExcise()));
     }
 
     @Test
@@ -196,7 +196,7 @@ public class InvoiceTest {
         //price per bottle 12 total price 10*12+55.60 = 175.60, same gross for fulwe
         invoice.addProduct(bottleOfWine, 10);
         invoice.addProduct(fuel, 10);
-        Assert.assertThat(new BigDecimal("0.001"), Matchers.greaterThan(invoice.getGrossTotal().subtract(new BigDecimal(351.20))));
+        Assert.assertThat(new BigDecimal("351.20"), Matchers.equalTo(invoice.getGrossTotal()));
     }
 
     @Test
